@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brilho do Arco-Íris</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="icon" href="./img/icon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./img/icon.ico" type="image/x-icon">
+</head>
+
+<body class="flex flex-col h-screen">
+    <div class="flex-grow bg-blue-100">
+        <header>
+            <nav class="bg-white outline outline-offset-2 outline-orange-400">
+                <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+                   <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+                        <img src="./img/logotipoPrincipal.png" class="h-28" alt="Logo Brilho do Arco-Íris" />
+                    </a>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <div class="flex justify-center py-24">
+                <div class="block max-w-3xl p-6 bg-white border border-gray-200 rounded-lg shadow">
+                    <h5 class="mb-2 text-4xl font-bold tracking-tight text-indigo-900 text-center px-12 pb-5">Cadastrar
+                        Professor</h5>
+                    <form action="/cadastrarProf" method="POST" class="max-w-sm mx-auto">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="mb-5">
+                                <fieldset>
+                                    <label for="cod" class="block text-sm font-medium text-gray-900">Código</label>
+                                    <input type="text" id="cod" placeholder="Código do professor" name="cod"
+                                        onkeypress="return allowOnlyNumbers(event)"
+                                        class="bg-gray-100 border-2 border-indigo-900 text-gray-700 placeholder-gray-500 text-base focus:ring-indigo-800 focus:border-indigo-800 block w-full p-2.5"
+                                        value="{{professor.cod}}" required autocomplete="off" />
+                                </fieldset>
+                            </div>
+                            <div class="mb-5">
+                                <fieldset>
+                                    <label for="nome" class="block text-sm font-medium text-gray-900">Nome</label>
+                                    <input type="text" id="nome" placeholder="Nome do professor" name="nome"
+                                        onkeypress="return allowOnlyLetters(event)"
+                                        oninput="this.value = this.value.replace(/(\b[a-z](?!\s))/g, function(x){return x.toUpperCase();});"
+                                        pattern="[A-Za-zÀ-ú]+\s[A-Za-zÀ-ú]+.*"
+                                        title="Por favor, informe o nome e sobrenome." class="bg-gray-100 border-2 border-indigo-900 text-gray-700 placeholder-gray-500
+                                    text-base focus:ring-indigo-800 focus:border-indigo-800 block w-full p-2.5"
+                                        required autocomplete="off" />
+                                </fieldset>
+                            </div>
+                            <div class="mb-5">
+                                <fieldset>
+                                    <label for="cpf" class="block text-sm font-medium text-gray-900">CPF</label>
+                                    <input type="text" id="cpf" placeholder="CPF do professor" name="cpf"
+                                        class="bg-gray-100 border-2 border-indigo-900 text-gray-700 placeholder-gray-500 text-base focus:ring-indigo-800 focus:border-indigo-800 block w-full p-2.5"
+                                        oninput="formatCPF()" maxlength="14" required autocomplete="off" />
+                                </fieldset>
+                            </div>
+                            <div class="mb-5">
+                                <fieldset>
+                                    <label for="turma" class="block text-sm font-medium text-gray-900">Turma</label>
+                                    <select id="turma" name="turma"
+                                        class="bg-gray-100 border-2 border-indigo-900 text-gray-700 placeholder-gray-500 text-base focus:ring-indigo-800 focus:border-indigo-800 block w-full p-2.5"
+                                        required autocomplete="off">
+                                        <option disabled selected>Selecione...</option>
+                                        <option value="1º Ano A">1º Ano A</option>
+                                        <option value="1º Ano B">1º Ano B</option>
+                                        <option value="2º Ano A">2º Ano A</option>
+                                        <option value="2º Ano B">2º Ano B</option>
+                                        <option value="3º Ano A">3º Ano A</option>
+                                        <option value="3º Ano B">3º Ano B</option>
+                                    </select>
+                                </fieldset>
+                            </div>
+                            <div class="mb-5">
+                                <fieldset>
+                                    <label for="nomeUser" class="block text-sm font-medium text-gray-900">Nome de
+                                        Usuário</label>
+                                    <input type="text" id="nomeUser" placeholder="Username do professor" name="nomeUser"
+                                        class="bg-gray-100 border-2 border-indigo-900 text-gray-700 placeholder-gray-500 text-base focus:ring-indigo-800 focus:border-indigo-800 block w-full p-2.5"
+                                        required autocomplete="off" />
+                                </fieldset>
+                            </div>
+                            <div class="mb-5">
+                                <fieldset>
+                                    <label for="senha" class="block text-sm font-medium text-gray-900">Senha</label>
+                                    <input type="password" id="senha" placeholder="Senha do professor" name="senha"
+                                        class="bg-gray-100 border-2 border-indigo-900 text-gray-700 placeholder-gray-500 text-base focus:ring-indigo-800 focus:border-indigo-800 block w-full p-2.5"
+                                        required autocomplete="off" />
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="mb-5 text-center items-center">
+                            <button type="submit" id="form-submit"
+                                class="inline-flex items-center px-12 py-2 text-base font-medium text-center text-white bg-indigo-700 rounded-sm hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 mt-8">
+                                Atualizar
+                            </button>
+                            <a href="/consultarAdmin"
+                                class="inline-flex items-center px-16 py-2 text-base font-medium text-center text-white bg-indigo-700 rounded-sm hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 mt-8">
+                                Voltar
+                            </a>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </main>
+    </div>
+    <footer class="bg-orange-500 shadow">
+        <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+            <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
+            <span class="block text-base text-white text-center">Copyright © 2024 | Todos os direitos reservados -
+                Brilho do Arco-Íris</span>
+        </div>
+    </footer>
+
+    <script>
+        function formatCPF() {
+            var cpfInput = document.getElementById('cpf');
+            cpfInput.value = cpfInput.value.replace(/[^0-9]/g, ''); // Remove caracteres não numéricos
+            cpfInput.value = cpfInput.value.substring(0, 14); // Limita a 14 caracteres
+            cpfInput.value = cpfInput.value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+        }
+
+        // Função para permitir apenas números em campos específicos
+        function allowOnlyNumbers(event) {
+            var key = event.keyCode || event.which;
+            key = String.fromCharCode(key);
+            var regex = /[0-9]|\./; // Apenas números são permitidos
+            if (!regex.test(key)) {
+                event.preventDefault();
+                return false;
+            }
+        }
+
+        // Função para permitir apenas letras em campos específicos
+        function allowOnlyLetters(event) {
+            var key = event.keyCode || event.which;
+            key = String.fromCharCode(key);
+            var regex = /[A-Za-zÀ-ú\s]/; // Apenas letras são permitidas
+            if (!regex.test(key)) {
+                event.preventDefault();
+                return false;
+            }
+        }
+
+    </script>
+</body>
+
+</html>

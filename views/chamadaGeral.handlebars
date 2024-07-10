@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brilho do Arco-Íris</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="./img/icon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./img/icon.ico" type="image/x-icon">
+</head>
+
+<body class="flex flex-col h-screen">
+    <div class="flex-grow bg-blue-100">
+        <header>
+            <nav class="bg-white outline outline-offset-2 outline-orange-400">
+                <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+                    <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+                        <img src="./img/logotipoPrincipal.png" class="h-28" alt="Logo Brilho do Arco-Íris" />
+                    </a>
+                    <button data-collapse-toggle="navbar-default" type="button"
+                        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-orange-500 rounded-lg md:hidden hover:bg-orange-100 focus:outline-none focus:ring-2 focus:ring-orange-200"
+                        aria-controls="navbar-default" aria-expanded="false">
+                        <span class="sr-only">Abrir Menu</span>
+                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 17 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M1 1h15M1 7h15M1 13h15" />
+                        </svg>
+                    </button>
+                    <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+                        <ul
+                            class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-rose-100 rounded-lg bg-white md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white">
+                            <li>
+                                <a href="/consultarProf"
+                                    class="block py-2 px-3 text-orange-500 text-lg font-bold rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-gray-400 md:p-0">Home</a>
+                            </li>
+                            <li>
+                                <a href="/"
+                                    class="block py-2 px-3 text-orange-500 text-lg font-bold rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-gray-400 md:p-0">Sair</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <main class="pb-12">
+                <div class="relative overflow-x-auto sm:rounded-lg px-5 md:px-40 pt-5">
+                    <table
+                        class="w-full text-base text-center rtl:text-right text-gray-900 p-5 border border-orange-700">
+                        <thead class="text-base text-white uppercase bg-orange-500">
+                            <tr>
+                                <th colspan="3" class="pt-3 pb-5">
+                                    <h5 class="mb-2 text-3xl font-bold tracking-tight text-white">Chamada Geral da Turma
+                                    </h5>
+                                </th>
+                                <th class="pt-3 pb-5">
+                                    <a href="./chamadaDiaria"
+                                        class="inline-flex px-3 text-base font-medium text-left text-white bg-orange-500 rounded-lg hover:bg-orange-400 focus:ring-4 focus:outline-none focus:ring-orange-300">+
+                                        Chamada</a>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th scope="col" class="px-6 py-3">Nome</th>
+                                <th scope="col" class="px-6 py-3">Presenças</th>
+                                <th scope="col" class="px-6 py-3">Faltas</th>
+                                <th scope="col" class="px-6 py-3">Aprovação</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-orange-800">
+                            {{#each alunos}}
+                            <tr>
+
+                                <td class="px-6 py-4" data-label="Nome">{{this.nome}}</td>
+                                <td class="px-6 py-4 bg-orange-200" data-label="Presenças">{{this.presencas}}</td>
+                                <td class="px-6 py-4" data-label="Faltas">{{this.faltas}}</td>
+                                <td class="px-6 py-4 {{#if this.faltasGreaterThanTen}}bg-red-200 text-red-800{{else}}bg-green-200 text-green-800{{/if}}"
+                                    data-label="Aprovação">
+                                    {{#if this.faltasGreaterThanTen}}
+                                    Atenção
+                                    {{else}}
+                                    OK
+                                    {{/if}}
+                                </td>
+                            </tr>
+                            {{/each}}
+
+
+                        </tbody>
+
+                    </table>
+                </div>
+            </main>
+
+        </header>
+    </div>
+    <footer class="bg-orange-500 shadow">
+        <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+            <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
+            <span class="block text-base text-white text-center">Copyright © 2024 | Todos os direitos reservados -
+                Brilho do Arco-Íris</span>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brilho do Arco-Íris</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="./img/icon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./img/icon.ico" type="image/x-icon">
+</head>
+
+<body class="flex flex-col h-screen">
+    <div class="flex-grow bg-blue-100">
+        <header>
+            <nav class="bg-white outline outline-offset-2 outline-orange-400">
+                <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+                    <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+                        <img src="./img/logotipoPrincipal.png" class="h-28" alt="Logo Brilho do Arco-Íris" />
+                    </a>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <div class="flex justify-center py-24">
+                <div class="block max-w-3xl p-6 bg-white border border-gray-200 rounded-lg shadow">
+                    <h5 class="mb-2 text-4xl font-bold tracking-tight text-indigo-900 text-center px-12 pb-5">Editar
+                        Notas</h5>
+                    <form action="/atualizarNotas" method="POST" class="max-w-sm mx-auto"
+                        onsubmit="return validarNotas()">
+                        <div class="grid grid-cols-1 gap-4">
+                            <div>
+                                <div class="flex">
+                                    <label for="" class="block text-sm font-medium text-gray-900">Aluno:</label>
+                                    <label for=""
+                                        class="block text-sm font-medium text-gray-900 ml-2">{{notas.nome}}</label>
+                                </div>
+                                <br>
+                                <fieldset>
+                                    <input type="hidden" name="id" class="form-control" id="id" value="{{id}}">
+                                    <label for="nota1" class="block text-sm font-medium text-gray-900">1ª Nota</label>
+                                    <input type="text" id="nota1" placeholder="Nota 1" name="nota1" autocomplete="off"
+                                        class="bg-gray-100 border-2 border-indigo-900 text-gray-700 placeholder-gray-500 text-base focus:ring-indigo-800 focus:border-indigo-800 block w-full p-2.5"
+                                        value="{{notas.nota1}}" maxlength="2" required />
+                                </fieldset>
+                            </div>
+                            <br>
+                            <div>
+                                <div>
+                                    <fieldset>
+                                        <label for="nota2" class="block text-sm font-medium text-gray-900">2ª
+                                            Nota</label>
+                                        <input type="text" id="nota2" placeholder="Nota 2" name="nota2"
+                                            autocomplete="off"
+                                            class="bg-gray-100 border-2 border-indigo-900 text-gray-700 placeholder-gray-500 text-base focus:ring-indigo-800 focus:border-indigo-800 block w-full p-2.5"
+                                            value="{{notas.nota2}}" maxlength="2" required />
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <br>
+                            <div>
+                                <div>
+                                    <fieldset>
+                                        <label for="nota3" class="block text-sm font-medium text-gray-900">3ª
+                                            Nota</label>
+                                        <input type="text" id="nota3" placeholder="Nota 3" name="nota3"
+                                            autocomplete="off"
+                                            class="bg-gray-100 border-2 border-indigo-900 text-gray-700 placeholder-gray-500 text-base focus:ring-indigo-800 focus:border-indigo-800 block w-full p-2.5"
+                                            value="{{notas.nota3}}" maxlength="2" required />
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <br>
+                            <div>
+                                <div>
+                                    <fieldset>
+                                        <label for="nota4" class="block text-sm font-medium text-gray-900">4ª
+                                            Nota</label>
+                                        <input type="text" id="nota4" placeholder="Nota 4" name="nota4"
+                                            autocomplete="off"
+                                            class="bg-gray-100 border-2 border-indigo-900 text-gray-700 placeholder-gray-500 text-base focus:ring-indigo-800 focus:border-indigo-800 block w-full p-2.5"
+                                            value="{{notas.nota4}}" maxlength="2" required />
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="mb-5 text-center items-center">
+                            <button type="submit" id="form-submit"
+                                class="inline-flex items-center px-12 py-2 text-base font-medium text-center text-white bg-indigo-700 rounded-sm hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 mt-8">
+                                Atualizar
+                            </button>
+                            <a href="/consultarNotas">
+                                <div
+                                    class="inline-flex items-center px-16 py-2 text-base font-medium text-center text-white bg-indigo-700 rounded-sm hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 mt-8">
+                                    Voltar
+                                </div>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="bg-orange-500 shadow">
+        <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+            <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
+            <span class="block text-base text-white text-center">Copyright © 2024 | Todos os direitos reservados -
+                Brilho do Arco-Íris</span>
+        </div>
+    </footer>
+
+    <div id="modal"
+        class="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center hidden bg-gray-800 bg-opacity-75">
+        <div class="bg-white p-8 rounded shadow-md">
+            <p id="modal-message" class="text-lg text-gray-900"></p>
+            <button id="modal-close"
+                class="mt-4 px-4 py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600 focus:outline-none">OK</button>
+        </div>
+    </div>
+
+    <script>
+        function validarNotas() {
+            var nota1 = document.getElementById('nota1').value;
+            var nota2 = document.getElementById('nota2').value;
+            var nota3 = document.getElementById('nota3').value;
+            var nota4 = document.getElementById('nota4').value;
+
+            // Verificar se todas as notas estão dentro do intervalo de 0 a 10
+            if (isNaN(nota1) || isNaN(nota2) || isNaN(nota3) || isNaN(nota4)) {
+                exibirModal("Por favor, digite apenas números para as notas.");
+                return false;
+            }
+
+            nota1 = parseFloat(nota1);
+            nota2 = parseFloat(nota2);
+            nota3 = parseFloat(nota3);
+            nota4 = parseFloat(nota4);
+
+            if (nota1 < 0 || nota1 > 10 || nota2 < 0 || nota2 > 10 || nota3 < 0 || nota3 > 10 || nota4 < 0 || nota4 > 10) {
+                exibirModal("As notas devem estar entre 0 e 10.");
+                return false;
+            }
+
+            // Se todas as validações passarem, o formulário será enviado
+            return true;
+        }
+
+        function exibirModal(message) {
+            var modal = document.getElementById('modal');
+            var modalMessage = document.getElementById('modal-message');
+            var modalClose = document.getElementById('modal-close');
+
+            modalMessage.textContent = message;
+            modal.classList.remove('hidden');
+
+            modalClose.addEventListener('click', function () {
+                modal.classList.add('hidden');
+            });
+        }
+    </script>
+</body>
+
+</html>

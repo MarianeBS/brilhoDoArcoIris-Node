@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brilho do Arco-Íris</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="./img/icon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./img/icon.ico" type="image/x-icon">
+</head>
+
+<body class="flex flex-col min-h-screen bg-blue-100">
+    <header>
+        <nav class="bg-white outline outline-offset-2 outline-orange-400">
+            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+                <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+                    <img src="./img/logotipoPrincipal.png" class="h-28" alt="Logo Brilho do Arco-Íris" />
+                </a>
+            </div>
+        </nav>
+    </header>
+    <main class="flex-grow flex justify-center items-center py-24">
+        <div class="max-w-sm w-full bg-white border border-gray-200 rounded-lg shadow p-6">
+            <form id="login-form" action="/login" method="POST" class="max-w-sm mx-auto">
+                <h5 class="mb-4 text-4xl font-bold tracking-tight text-indigo-900 text-center">Login</h5>
+                <p class="mb-6 text-base tracking-tight text-gray-500 text-center">Realize o login utilizando suas
+                    próprias credenciais.</p>
+                <div class="mb-5">
+                    <label for="nomeUsuario" class="block text-base font-medium">Nome de usuário</label>
+                    <input type="text" name="nomeUsuario" id="nomeUsuario"
+                        class="bg-gray-100 border-2 border-indigo-900 text-gray-700 placeholder-gray-500 text-base focus:ring-indigo-800 focus:border-indigo-800 block w-full p-2.5"
+                        placeholder="Digite seu username"  autocomplete="off">
+                </div>
+                <div class="mb-5">
+                    <label for="senha" class="block text-base font-medium">Senha</label>
+                    <input type="password" name="senha" id="senha"
+                        class="bg-gray-100 border-2 border-indigo-900 text-gray-700 placeholder-gray-500 text-base focus:ring-indigo-800 focus:border-indigo-800 block w-full p-2.5"
+                        placeholder="Digite sua senha" autocomplete="off" required>
+                </div>
+                <div class="text-center">
+                    <button type="submit"
+                        class="inline-flex items-center px-10 py-2 text-base font-medium text-white bg-indigo-700 rounded-sm hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300">Entrar</button>
+                </div>
+            </form>
+        </div>
+    </main>
+    <footer class="bg-orange-500 shadow">
+        <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+            <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
+            <span class="block text-base text-white text-center">Copyright © 2024 | Todos os direitos reservados -
+                Brilho do Arco-Íris</span>
+        </div>
+    </footer>
+</body>
+
+</html>

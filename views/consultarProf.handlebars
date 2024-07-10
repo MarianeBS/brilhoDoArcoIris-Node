@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brilho do Arco-Íris</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="./img/icon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./img/icon.ico" type="image/x-icon">
+</head>
+<body class="flex flex-col h-screen">
+    <div class="flex-grow bg-blue-100">
+        <header>
+            <nav class="bg-white outline outline-offset-2 outline-orange-400">
+                <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+                    <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+                        <img src="./img/logotipoPrincipal.png" class="h-28" alt="Logo Brilho do Arco-Íris" />
+                    </a>
+                    <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-orange-500 rounded-lg md:hidden hover:bg-orange-100 focus:outline-none focus:ring-2 focus:ring-orange-200" aria-controls="navbar-default" aria-expanded="false">
+                        <span class="sr-only">Abrir Menu</span>
+                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                        </svg>
+                    </button>
+                    <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+                        <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-rose-100 rounded-lg bg-white md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white">
+                            <li>
+                                <a href="./consultarProf" class="block py-2 px-3 text-orange-500 text-lg font-bold rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-gray-400 md:p-0">Home</a>
+                            </li>
+                            <li>
+                                <a href="/" class="block py-2 px-3 text-orange-500 text-lg font-bold rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-gray-400 md:p-0">Sair</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>  
+            </nav>
+            <main class="pb-12">
+                <div class="flex justify-center py-20 mx-10">
+                    <a href="#" class="block max-w-lg mx-auto p-6 bg-white border border-gray-200 rounded-lg shadow">
+                        <h5 class="mb-2 text-4xl font-bold tracking-tight text-indigo-900 text-center">Bem-vindo à Escola Brilho do Arco-Íris</h5>
+                        <p class="text-base text-center">Gerencie seus serviços desta unidade escolar de alfabetização infantil.</p>
+                    </a>
+                </div>    
+                <div class="bg-white p-5 mx-20 rounded-lg border-gray-200 shadow">
+                    <h5 class="mb-2 text-3xl font-bold tracking-tight text-orange-500 text-center pb-5">ATIVIDADES</h5>
+                    <div class="grid md:grid-cols-3 grid-col-1 text-center">
+                        <div>
+                            <a href="./consultarAlunos">      
+                                <button type="button" class="text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none w-28 h-28">ALUNOS</button>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="./consultarNotas">
+                                <button type="button" class="text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none w-28 h-28">NOTAS</button>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="./chamadaGeral">
+                                <button type="button" class="text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none w-28 h-28">CHAMADA</button>
+                            </a>
+                        </div>
+                    </div>
+                </div> 
+            </main>
+        </header>
+    </div>
+    <footer class="bg-orange-500 shadow">
+        <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+            <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
+            <span class="block text-base text-white text-center">Copyright © 2024 | Todos os direitos reservados - Brilho do Arco-Íris</span>
+        </div>
+    </footer>
+</body>
+</html>
